@@ -43,7 +43,7 @@ app.get("/all", function(req, res) {
 });
 
 app.get("/scrape", function(req, res) {
-  // Create a new user using req.body
+
 
   request("https://www.theonion.com/", function(error, response, html) {
 
@@ -72,21 +72,25 @@ app.get("/scrape", function(req, res) {
     --------------------------------------------`);
 
       newsArr.push(newScrapeObj);
-    
-      
-      newScrapeObj.save(function (err, newScrapeObj) {  
-        console.log("saving");
-        if (err) return res.status(500).send(err);
-        return res.status(200).send(newScrapeObj);
 
-
-      })
     });
+
+      console.log(`news arr: ${newsArr}
+      --------------------------------------------`);
+
+      db.newsscrapes.insertMany(newsArr, function(error, docs) {
+
+        if (err) return res.status(500).send(err);
+        return res.status(200).send(docs);
+
+      });
+     
+      console.log(`scrape complete`);
+
+    })
 });
 
-res.send("Scrape Complete");
 
-});
 
 // Scrape data from one site and place it into the mongodb db
 //   app.get("/scrape", function(req, res) {
