@@ -24,10 +24,9 @@ db.on("error", function(error) {
 
 // Create routes
 // ----------------------------------------------------
-// Index Redirect
-router.get('/', function (req, res) {
-    res.render('index');
-  });
+// router.get('/', function (req, res) {
+//     res.render('index');
+//   });
   
   
 //   // Index Page (render all burgers to DOM)
@@ -57,16 +56,22 @@ router.get('/', function (req, res) {
   // ----------------------------------------------------
   
   // Retrieve data from the db
-  router.get("/all", function(req, res) {
+  router.get("/", function(req, res) {
     // Find all results from the scrapedData collection in the db
-    db.newsscrapes.find({}, function(error, scrape) {
+    db.newsscrapes.find({}, function(error, scrapes) {
       // Throw any errors to the console
       if (error) {
         console.log(error);
       }
       // If there are no errors, send the data to the browser as json
       else {
-        res.json(scrape);
+
+        console.log(scrapes);
+        // res.json(scrapes);
+        // res.render('index');
+        var hbsObject = { newsscrapes: scrapes };
+//       //console.log(hbsObject);
+      res.render('index', hbsObject);
       }
     });
   });
