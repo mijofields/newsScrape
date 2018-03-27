@@ -33,6 +33,7 @@ var NewsScrape = new Schema({
     default: []
 
   }
+  
 
 });
 

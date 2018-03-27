@@ -7,15 +7,22 @@
      
 
         {{#each newsscrapes }}
-          {{!-- {{#unless devoured}} --}}
           <div class="col-10" id="scrapes">
           <div class="border rounded border-dark mb-1" data-id={{_id}}>
           <div class="text-left">{{title}}</div>
           <div class="text-left"><a href={{link}} target="_blank">{{link}}</a></div>
           <div class="text-left">Scraped: {{created}}</div>
+        {{#if comments}}
+          <div class="text-left border-warning border-top">Comments:</div>
+          {{#each comments}}
+          <div class="text-left">{{this}}</div>
+          {{/each}}
+    
+        {{/if}}
     <div class="text-left border-success border-top">    
-    <label for="formInput">Comment:</label>
+    <label for="formInput">Add a comment:</label>
     <input type="text" class="form-control" placeholder="Write a comment...">
+    <button type="button" class="btn btn-primary">Submit</button>
     </div>
   </div>
   </div>

@@ -1,12 +1,15 @@
 .jumbotron {
-
-    font-weight: bolder;
-    background-color: lightgreen;
+ 
+    background-image: url('pexels-photo-479444.jpeg');
+    background-size: 100%;
+    font-family: 'Slabo 40px', serif;
+    font-weight: bold;
+    color:black;
     
 }
 
 body {
 
-
+background-image: url('paisley.png');
 
 }

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+
 const mongojs = require("mongojs");
 const mongoose = require("mongoose");
 
@@ -9,7 +10,8 @@ const databaseUrl = "mongodb://localhost:27017/newsScraper";
 const collections = ["newsscrapes"];
 
 const request = require("request");
-const cheerio = require("cheerio");
+const cheerio = require('cheerio');
+
 
 const NewsScrape = require("../newsScrapeModel.js");
 mongoose.connect("mongodb://localhost:27017/newsScraper", {
@@ -76,6 +78,8 @@ db.on("error", function(error) {
     });
   });
   
+  
+  
   router.get("/scrape", function(req, res) {
   
   
@@ -114,7 +118,7 @@ db.on("error", function(error) {
   
         NewsScrape.insertMany(newsArr, {ordered: false}, function(err, res) {
   
-          if (err) {console.log(`error: ${err}`)
+          if (err) { console.log(`error: ${err}`)
         } else {
           console.log(`uploaded:  ${res}`);
           
@@ -126,18 +130,42 @@ db.on("error", function(error) {
        
         res.send("scrape complete"); 
   
-      })
-  });
+      });
+
+    });
 
 
 
+//       $('.submit').click(function(){
 
+//         event.preventDefault();
 
+//         comment = $('.submit').val().trim();
 
-
-
-
+//         // NewsScrape.findByIdAndUpdate(  
+//           // the id of the item to find
+//       //     req.params.todoId,
+      
+//       //     // the change to be made. Mongoose will smartly combine your existing 
+//       //     // document with this change, which allows for partial updates too
+//       //     req.body,
+      
+//       //     // an option that asks mongoose to return the updated version 
+//       //     // of the document instead of the pre-updated one.
+//       //     {new: true},
+      
+//       //     // the callback function
+//       //     (err, todo) => {
+//       //     // Handle any possible database errors
+//       //         if (err) return res.status(500).send(err);
+//       //         return res.send(todo);
+//       //     }
+//       // )
+//       // There a
+//  });
 
 
 
 module.exports = router;
+
+
