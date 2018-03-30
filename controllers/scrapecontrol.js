@@ -1,21 +1,19 @@
-const express = require('express');
-const router = express.Router();
 
-
+// const router = express.Router();
+// external dependencies
+const router = require('express').Router();
 const mongojs = require("mongojs");
 const mongoose = require("mongoose");
+const request = require("request");
+const cheerio = require('cheerio');
 
 // Database configuration
 const databaseUrl = "mongodb://localhost:27017/newsScraper";
 const collections = ["newsscrapes"];
 
-const request = require("request");
-const cheerio = require('cheerio');
-
-
-const NewsScrape = require("../newsScrapeModel.js");
-mongoose.connect("mongodb://localhost:27017/newsScraper", {
-});
+const NewsScrape = require("../models/newsScrapeModel.js");
+mongoose.connect(
+  process.env.MONGODB_URI || databaseUrl,{});
 
 // Hook mongojs configuration to the db variable
 const db = mongojs(databaseUrl, collections);
@@ -50,13 +48,16 @@ db.on("error", function(error) {
   
   
 //   // Devour a Burger
-//   router.post('/burger/eat/:id', function (req, res) {
-//     burger.updateOne(req.params.id, function() {
-//       res.redirect('/index');
-//     });
-//   });
+  router.post('/comment/:id', function (req, res) {
+    db.newsscrapes.updateOne(req.params.id, function() {
+      res.redirect('/index');
+    });
+  });
   // ----------------------------------------------------
-  
+  router.get("/all",  function (req, res){
+    res.redirect('/');
+  });
+
   // Retrieve data from the db
   router.get("/", function(req, res) {
     // Find all results from the scrapedData collection in the db
@@ -65,23 +66,16 @@ db.on("error", function(error) {
       if (error) {
         console.log(error);
       }
-      // If there are no errors, send the data to the browser as json
       else {
-
-        console.log(scrapes);
-        // res.json(scrapes);
-        // res.render('index');
         var hbsObject = { newsscrapes: scrapes };
 //       //console.log(hbsObject);
       res.render('index', hbsObject);
       }
     });
   });
+    
   
-  
-  
-  router.get("/scrape", function(req, res) {
-  
+  router.get("/scrape", function(req, res) {  
   
     request("https://www.theonion.com/", function(error, response, html) {
   
@@ -96,16 +90,13 @@ db.on("error", function(error) {
         var link = $(element).children("a").attr("href");
         // console.log(`Link: ${link}
         // -------------------------------------------`);
-  
-  
-        var newScrapeObj = new NewsScrape({
-  
+   
+        var newScrapeObj = new NewsScrape({  
           title: title,
-          link: link
-  
+          link: link  
         })
   
-  
+
         console.log(`New Obj: ${newScrapeObj}
         --------------------------------------------`);
   
@@ -113,25 +104,19 @@ db.on("error", function(error) {
   
       });
   
-        // console.log(`news arr: ${newsArr}
-        // --------------------------------------------`);
-  
         NewsScrape.insertMany(newsArr, {ordered: false}, function(err, res) {
   
           if (err) { console.log(`error: ${err}`)
         } else {
-          console.log(`uploaded:  ${res}`);
-          
+          console.log(`uploaded:  ${res}`);          
           return
   
         };
   
         });
-       
-        res.send("scrape complete"); 
-  
+           res.redirect('/');
+          
       });
-
     });
 
 
