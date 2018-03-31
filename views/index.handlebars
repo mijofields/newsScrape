@@ -1,8 +1,7 @@
 
 <div class="container">
   <center>
-    <!-- Left side (ready to eat) -->
-    {{!-- <div class="col-md-12"> --}}
+   
       <h4>Griddled Onion News Burgers!</h4>
      
 
@@ -19,25 +18,16 @@
           {{/each}}
     
         {{/if}}
-    <div class="text-left border-success border-top" data-id={{_id}}>    
-    <label for="formInput">Add a comment:</label>
+        <form action="/comment/{{_id}}" method="POST">
+    <div class="text-left border-success border-top input-group">    
+    {{!-- <label for="formInput">Add a comment:</label> --}}
     <input type="text" class="form-control comment-input" placeholder="Write a comment...">
-    <button type="button" class="btn btn-primary comment">Submit</button>
+    <button type="button" class="btn btn-primary comment-btn" type="submit">Submit</button>
     </div>
+    </form>
   </div>
   </div>
 
-          {{!-- <form action="burger/eat/{{id}}" method="POST">
-            <div class="input-group">
-              <li class="form-control">{{id}}. {{burger_name}}</li>
-                <span class="input-group-btn">
-                  <button class="btn btn-success devour-button" type="submit">Devour It!</button>
-                </span>
-            </div>
-          </form> --}}
-          {{!-- {{/unless}} --}}
         {{/each}}
         </center>
 </div>
-
-

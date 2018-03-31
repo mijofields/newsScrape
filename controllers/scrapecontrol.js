@@ -47,13 +47,17 @@ db.on("error", function(error) {
 //   });
   
   
-//   // Devour a Burger
-  router.post('/comment/:id', function (req, res) {
-    db.newsscrapes.updateOne(req.params.id, function() {
-      res.redirect('/index');
+
+  router.post('/comment/:_id', function (req, res) {
+    console.log("post working");
+      console.log(req.params.id);
+      console.log(req.params.body);
+
+    // db.newsscrapes.updateOne(req.params.id, function() {
+    //   res.redirect('/index');
     });
-  });
-  // ----------------------------------------------------
+
+
   router.get("/all",  function (req, res){
     res.redirect('/');
   });
@@ -86,17 +90,14 @@ db.on("error", function(error) {
       $("h1.headline").each(function(i, element) {
         // Save the text and href of each link enclosed in the current element
         var title = $(element).children("a").text();
-        // console.log(`Title: ${title}`)
         var link = $(element).children("a").attr("href");
-        // console.log(`Link: ${link}
-        // -------------------------------------------`);
+  
    
         var newScrapeObj = new NewsScrape({  
           title: title,
           link: link  
         })
   
-
         console.log(`New Obj: ${newScrapeObj}
         --------------------------------------------`);
   
