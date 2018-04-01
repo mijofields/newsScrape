@@ -53,17 +53,33 @@ db.on("error", function(error) {
   
   
 
-  router.post('/:id/:comment?', function (req, res) {
+  router.post('/:id', function (req, res) {
+
+
+    if (req.body.comment === "") {
+
+
+      res.send(`You need to enter a comment,
+      please go back and try again`);
+
+
+    } else {
 
     console.log("method post");
-    console.log(req.url);
-    console.log(req.body);
-    console.log(req.params)
-    console.log(req.params.id);
-    console.log("---------------------------------------------");
-    console.log(req);
+    var ObjectId = `ObjectId("${req.params.id}")`;
+    console.log(ObjectId);
+
+    NewsScrape.findOneAndUpdate({"_id": req.params.id},
+      {$push: { "comments": req.body.comment}},
+      { upsert: true }, function (error, comment) {
+
+        if (error) throw error;
+        res.redirect('/');
 
 
+
+      });
+    };
   });
 
     
