@@ -24,33 +24,6 @@ db.on("error", function(error) {
   console.log("Database Error:", error);
 });
 
-
-// Create routes
-// ----------------------------------------------------
-// router.get('/', function (req, res) {
-//     res.render('index');
-//   });
-  
-  
-//   // Index Page (render all burgers to DOM)
-//   router.get('/index', function (req, res) {
-//     burger.selectAll(function(data) {
-//       var hbsObject = { burgers: data };
-//       //console.log(hbsObject);
-//       res.render('index', hbsObject);
-//     });
-//   });
-  
-  
-//   // Create a New Burger
-//   router.post('/burger/create', function (req, res) {
-//     burger.insertOne(req.body.burger_name, function() {
-//       res.redirect('/index');
-//     });
-//   });
-
-
-  
   
 
   router.post('/:id', function (req, res) {
