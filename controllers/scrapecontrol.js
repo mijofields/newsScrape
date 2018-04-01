@@ -45,20 +45,54 @@ db.on("error", function(error) {
 //       res.redirect('/index');
 //     });
 //   });
+
+
   
   
 
-  router.post('/comment/:_id', function (req, res) {
+  router.post('/comment/:id?', function (req, res) {
+
+    if (err) throw err;
+
     console.log("post working");
-      console.log(req.params.id);
-      console.log(req.params.body);
+    console.log(req.params.id)
+    console.log(req.params.body);
+    console.log(req.params.comment);
+
+    
+    console.log(res);
+
+   
+    console.log(`req: ${req}`);
+
+  });
+
+    
+
+  //   db.newsscrapes.findByIdAndUpdate(())
+
+  //   Employeehierarchy.findByIdAndUpdate(employeeparent._id,
+  //     { "$push": { "childrens": employee._id } },
+  //     { "new": true, "upsert": true },
+  //     function (err, managerparent) {
+  //         if (err) throw err;
+  //         console.log(managerparent);
+  //     }
+  // );
+
+      // db.newsscrapes.
 
     // db.newsscrapes.updateOne(req.params.id, function() {
     //   res.redirect('/index');
-    });
+  
+
 
 
   router.get("/all",  function (req, res){
+    res.redirect('/');
+  });
+
+  router.get("/index",  function (req, res){
     res.redirect('/');
   });
 
@@ -120,6 +154,17 @@ db.on("error", function(error) {
       });
     });
 
+    router.get('/*', function(req, res){
+
+      res.send("wildcard get activated, puto");
+
+  });
+
+  router.post('/*', function(req, res){
+
+    res.send("wildcard post activated, puto");
+
+  });
 
 
 //       $('.submit').click(function(){
