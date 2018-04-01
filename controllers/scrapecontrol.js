@@ -82,26 +82,6 @@ db.on("error", function(error) {
     };
   });
 
-    
-
-  //   db.newsscrapes.findByIdAndUpdate(())
-
-  //   Employeehierarchy.findByIdAndUpdate(employeeparent._id,
-  //     { "$push": { "childrens": employee._id } },
-  //     { "new": true, "upsert": true },
-  //     function (err, managerparent) {
-  //         if (err) throw err;
-  //         console.log(managerparent);
-  //     }
-  // );
-
-      // db.newsscrapes.
-
-    // db.newsscrapes.updateOne(req.params.id, function() {
-    //   res.redirect('/index');
-  
-
-
 
   router.get("/all",  function (req, res){
     res.redirect('/');
@@ -121,7 +101,6 @@ db.on("error", function(error) {
       }
       else {
         var hbsObject = { newsscrapes: scrapes };
-//       //console.log(hbsObject);
       res.render('index', hbsObject);
       }
     });
@@ -156,9 +135,11 @@ db.on("error", function(error) {
   
         NewsScrape.insertMany(newsArr, {ordered: false}, function(err, res) {
   
-          if (err) { console.log(`error: ${err}`)
+          if (err) {
+          console.log(`a news scrape has been completed with this info.
+          Please try again tomorrow`);
         } else {
-          console.log(`uploaded:  ${res}`);          
+      
           return
   
         };
@@ -171,46 +152,17 @@ db.on("error", function(error) {
 
     router.get('/*', function(req, res){
 
-      res.send("wildcard get activated, puto");
+      res.send(`This is not a valid URL.
+      Please try again`);
 
   });
 
   router.post('/*', function(req, res){
 
-    res.send("wildcard post activated, puto");
+    res.send(`This is not a valid URL.
+    Please try again`);
 
   });
-
-
-//       $('.submit').click(function(){
-
-//         event.preventDefault();
-
-//         comment = $('.submit').val().trim();
-
-//         // NewsScrape.findByIdAndUpdate(  
-//           // the id of the item to find
-//       //     req.params.todoId,
-      
-//       //     // the change to be made. Mongoose will smartly combine your existing 
-//       //     // document with this change, which allows for partial updates too
-//       //     req.body,
-      
-//       //     // an option that asks mongoose to return the updated version 
-//       //     // of the document instead of the pre-updated one.
-//       //     {new: true},
-      
-//       //     // the callback function
-//       //     (err, todo) => {
-//       //     // Handle any possible database errors
-//       //         if (err) return res.status(500).send(err);
-//       //         return res.send(todo);
-//       //     }
-//       // )
-//       // There a
-//  });
-
-
 
 module.exports = router;
 
