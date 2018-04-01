@@ -1,11 +1,14 @@
 
 // const router = express.Router();
 // external dependencies
+const express= require('express');
 const router = require('express').Router();
 const mongojs = require("mongojs");
 const mongoose = require("mongoose");
 const request = require("request");
 const cheerio = require('cheerio');
+
+
 
 // Database configuration
 const databaseUrl = "mongodb://localhost:27017/newsScraper";
@@ -50,14 +53,16 @@ db.on("error", function(error) {
   
   
 
-  router.post('/comment/:id', function (req, res) {
+  router.post('/:id/:comment?', function (req, res) {
 
     console.log("method post");
+    console.log(req.url);
+    console.log(req.body);
     console.log(req.params)
     console.log(req.params.id);
-    console.log(req.body);
-    // console.log(req.params.comment);
-    // console.log(req);
+    console.log("---------------------------------------------");
+    console.log(req);
+
 
   });
 

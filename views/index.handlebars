@@ -18,12 +18,12 @@
           {{/each}}
     
         {{/if}}
-        <form action="comment/{{_id}}" method="post">
-    <div class="text-left border-success border-top input-group"> 
-    <input type="text" name="comment" id="comment" class="form-control" placeholder="write a comment...">   
-    <input type="submit" class="btn btn-primary comment-btn" value="Submit">
-    </div>
-    </form>
+        <div class="text-left border-success border-top"> 
+        <form action="/{{_id}}" method="post">    
+        <input type="text" name="comment" id="comment" class="form-control" placeholder="write a comment...">   
+        <input type="submit" class="btn btn-primary comment-btn" value="Submit">
+        </form>
+        </div>
   </div>
   </div>
 

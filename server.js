@@ -1,11 +1,18 @@
 // Dependencies express
 const express = require("express");
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
+const logger = require("morgan");
 //dependencies mongoDB
 
 // Require request and cheerio. This makes the scraping possible
 const app = express();
-app.use(express.static('public'));
+
+app.use(logger("dev"));
+// Use body-parser for handling form submissions
+app.use(bodyParser.urlencoded({ extended: false }));
+// Use express.static to serve the public folder as a static directory
+app.use(express.static("public"));
 
 
 // Initialize Express
