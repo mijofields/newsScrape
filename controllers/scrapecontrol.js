@@ -50,20 +50,14 @@ db.on("error", function(error) {
   
   
 
-  router.post('/comment/:id?', function (req, res) {
+  router.post('/comment/:id', function (req, res) {
 
-    if (err) throw err;
-
-    console.log("post working");
-    console.log(req.params.id)
-    console.log(req.params.body);
-    console.log(req.params.comment);
-
-    
-    console.log(res);
-
-   
-    console.log(`req: ${req}`);
+    console.log("method post");
+    console.log(req.params)
+    console.log(req.params.id);
+    console.log(req.body);
+    // console.log(req.params.comment);
+    // console.log(req);
 
   });
 

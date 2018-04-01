@@ -2,8 +2,6 @@ const mongoose = require("mongoose");
 
 // Save a reference to the Schema constructor
 const Schema = mongoose.Schema;
-console.log("newsScrapeModel is working");
-
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
 var NewsScrape = new Schema({
