@@ -3,6 +3,9 @@ const express = require("express");
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const logger = require("morgan");
+const mongojs = require("mongojs");
+const databaseUrl = "mongodb://localhost:27017/Events_db"; //from mongo documentation
+const collections = ["events"];
 
 const app = express();
 
@@ -25,7 +28,7 @@ var router = require('./controllers/scrapecontrol.js');
 app.use('/', router);
 
 // Open Server
-var port = process.env.PORT || 3333;
+var port = process.env.PORT || 4812;
 app.listen(port, function() {
   console.log(`app now running on port ${port}`);
 });

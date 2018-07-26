@@ -67,7 +67,7 @@ db.on("error", function(error) {
   // Retrieve data from the db
   router.get("/", function(req, res) {
     // Find all results from the scrapedData collection in the db
-    db.newsscrapes.find().sort({created: -1}, function(error, scrapes) {
+    db.newsscrapes.find({}).sort({created: -1}, function(error, scrapes) {
       // Throw any errors to the console
       if (error) {
         console.log(error);
