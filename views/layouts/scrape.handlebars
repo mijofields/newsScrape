@@ -7,8 +7,8 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet"> //google font
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/es-us.js"></script> //moment cdn
+  <script>moment().format(MMMM Do YYYY, HH:mm)</script>
 
 
 		<title>The Onion News Scrape</title>
@@ -24,7 +24,9 @@
     <h4 class="display-4">The Onion News Scraper</h4>
     <p class="lead">This is a News Scraper utilizing mongoDB, mongooseJS and Express Handlebars
         to bring you the latest fake news and hilarity. Should you wish to leave a comment on any story please do so!</p>
-{{!-- <button type="button" class="btn btn-info" id='scrape'>Scrape</button> --}}
+        <form action="/scrape" method="get">
+        <button type="submit" class="btn btn-success" id='scrape'>Fresh Scrape</button>
+        </form>
         
   </div>
 

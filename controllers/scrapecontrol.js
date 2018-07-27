@@ -7,6 +7,7 @@ const mongojs = require("mongojs");
 const mongoose = require("mongoose");
 const request = require("request");
 const cheerio = require('cheerio');
+const moment = require('moment');
 
 
 
@@ -29,26 +30,36 @@ db.on("error", function(error) {
   router.post('/:id', function (req, res) {
 
 
-    if (req.body.comment === "") {
+    if (req.body.comment === "" || req.body.username ==="") {
 
 
-      res.send(`You need to enter a comment,
-      please go back and try again`);
+      res.send(`You seem to have left out some important information
+      please make sure you enter a comment and a username`);
 
 
     } else {
 
-    console.log("method post");
-    var ObjectId = `ObjectId("${req.params.id}")`;
-    console.log(ObjectId);
+    // console.log("method post");
+    // var ObjectId = `ObjectId("${req.params.id}")`;
+    // console.log(ObjectId);
+    
+    var commentObj = {
+
+      comment: req.body.comment,
+      username: req.body.username,
+      date: moment().format("MMM Do YYYY, HH:mm")
+
+    }
+   
 
     NewsScrape.findOneAndUpdate({"_id": req.params.id},
-      {$push: { "comments": req.body.comment}},
-      { upsert: true }, function (error, comment) {
+      {$push: {"comments": commentObj}},
+      { upsert: true }, function (error, commentObj) {
 
         if (error) throw error;
+        
         res.redirect('/');
-
+        
 
 
       });
