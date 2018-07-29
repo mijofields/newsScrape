@@ -1,5 +1,4 @@
 
-// const router = express.Router();
 // external dependencies
 const express= require('express');
 const router = require('express').Router();
@@ -16,6 +15,7 @@ const databaseUrl = "mongodb://localhost:27017/newsScraper";
 const collections = ["newsscrapes"];
 
 const NewsScrape = require("../models/newsScrapeModel.js");
+
 mongoose.connect(
   process.env.MONGODB_URI || databaseUrl,{});
 
@@ -32,7 +32,7 @@ db.on("error", function(error) {
 
     if (req.body.comment === "" || req.body.username ==="") {
 
-
+$('#errorModal').modal('show');
       res.send(`You seem to have left out some important information
       please make sure you enter a comment and a username`);
 
@@ -129,9 +129,10 @@ db.on("error", function(error) {
         };
   
         });
-           res.redirect('/');
+           
           
       });
+      res.redirect('/');
     });
 
     router.get('/*', function(req, res){

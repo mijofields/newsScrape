@@ -3,15 +3,18 @@
 <head>
 	<meta charset="UTF-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> <!--bootstrap cdn-->
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet"> //google font
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/es-us.js"></script> //moment cdn
-  <script>moment().format(MMMM Do YYYY, HH:mm)</script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script type="text/javascript" src="newsScrapeFrontend.js"></script>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> <!--bootstrap cdn-->
+   <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet"> //google font
+  
+  
+  <title>The Onion News Scrape</title>
 
 
-		<title>The Onion News Scrape</title>
+		
 	</head>
 	<body>
 
@@ -22,9 +25,9 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h4 class="display-4">The Onion News Scraper</h4>
-    <p class="lead">This is a News Scraper utilizing mongoDB, mongooseJS and Express Handlebars
+    <p class="lead">This is a News Scraper utilizing mongoDB, mongooseJS and express handlebars
         to bring you the latest fake news and hilarity. Should you wish to leave a comment on any story please do so!</p>
-        <form action="/scrape" method="get">
+        {{!-- <form action="/scrape" method="get"> --}}
         <button type="submit" class="btn btn-success" id='scrape'>Fresh Scrape</button>
         </form>
         
@@ -40,18 +43,13 @@
     
     
     
-    
-    
+
     
     
     
     </body>
 
-<script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
-  {{!-- <script src="app.js"></script> --}}
+
 
     </html>
 

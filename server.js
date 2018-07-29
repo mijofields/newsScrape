@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const logger = require("morgan");
 const mongojs = require("mongojs");
-const databaseUrl = "mongodb://localhost:27017/Events_db"; //from mongo documentation
+const databaseUrl = "mongodb://localhost:27017/newsScraper"; //from mongo documentation
 const collections = ["events"];
 
 const app = express();

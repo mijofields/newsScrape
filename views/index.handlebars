@@ -14,7 +14,7 @@
           <div class="text-left m-1">Scraped: {{created}}</div>
         {{#if comments}}
           {{#each comments}}
-          <div class="text-left m-1"><b>&#8594</b> {{this.comment}}:  {{this.username}} on {{this.date}}</div>
+          <div class="text-left m-1"><b>&#8594</b> {{this.comment}} [{{this.username}} on {{this.date}}]</div>
           {{/each}}
     
         {{/if}}
@@ -23,7 +23,7 @@
         <form action="/{{_id}}" method="post">
         <div class="row no-gutters m-1">
         <div class="col-8">    
-        <input class="form-control" type="text" name="comment" id="comment"  placeholder="comment:">
+        <input class="form-control" type="text" name="comment" id="comment"  placeholder="enter your comment:">
         </div>
         <div class="col-4">
         <input class="form-control" type="text" name="username" id="username"  placeholder="your name:">
