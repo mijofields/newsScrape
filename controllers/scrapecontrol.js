@@ -25,6 +25,71 @@ db.on("error", function(error) {
   console.log("Database Error:", error);
 });
 
+router.get("/scrape", function(req, res, next) {  
+  
+   request("https://www.theonion.com/", function(error, response, html) {
+
+    let newsArr = [];
+
+    const $ = cheerio.load(html);
+    // For each element with a "title" class
+    $("h1.headline").each(function(i, element) {
+      // Save the text and href of each link enclosed in the current element
+      let title = $(element).children("a").text();
+      let link = $(element).children("a").attr("href");
+
+ 
+      const newScrapeObj = new NewsScrape({  
+        title: title,
+        link: link  
+      })
+
+      // console.log(`New Obj: ${newScrapeObj}
+      // --------------------------------------------`);
+
+      newsArr.push(newScrapeObj);
+
+    });
+
+      NewsScrape.insertMany(newsArr, {ordered: false}, function(err, res) {
+
+        if (err) {
+        console.log(`mongo error: ${err.message}`); 
+        next();  
+            
+          
+
+      } else {
+    
+        res.redirect('/');
+
+      };
+
+      
+      });         
+    });
+  }, function(req, res) {
+
+    console.log(`next route in get /scrape`);
+    res.redirect('/');
+
+  } );
+
+  // Retrieve data from the db
+  router.get("/", function(req, res) {
+  // Find all results from the scrapedData collection in the db
+  db.newsscrapes.find({}).sort({created: -1}, function(error, scrapes) {
+    // Throw any errors to the console
+    if (error) {
+      console.log(error);
+    }
+    else {
+      var hbsObject = { newsscrapes: scrapes };
+    res.render('index', hbsObject);
+    }
+  });
+});
+
   
 
   router.post('/:id', function (req, res) {
@@ -32,16 +97,13 @@ db.on("error", function(error) {
 
     if (req.body.comment === "" || req.body.username ==="") {
 
-$('#errorModal').modal('show');
+// $('#errorModal').modal('show');
+
       res.send(`You seem to have left out some important information
       please make sure you enter a comment and a username`);
 
 
     } else {
-
-    // console.log("method post");
-    // var ObjectId = `ObjectId("${req.params.id}")`;
-    // console.log(ObjectId);
     
     var commentObj = {
 
@@ -60,12 +122,24 @@ $('#errorModal').modal('show');
         
         res.redirect('/');
         
-
-
       });
     };
   });
 
+  // router.get("/timeout", function (req, res, next){
+
+  //  if (true){
+
+  //   next();
+
+  //  }
+  // });
+
+  // router.get('/next', function (req, res) {
+
+  //   res.send(`next works!`);
+
+  // });
 
   router.get("/all",  function (req, res){
     res.redirect('/');
@@ -75,72 +149,18 @@ $('#errorModal').modal('show');
     res.redirect('/');
   });
 
-  // Retrieve data from the db
-  router.get("/", function(req, res) {
-    // Find all results from the scrapedData collection in the db
-    db.newsscrapes.find({}).sort({created: -1}, function(error, scrapes) {
-      // Throw any errors to the console
-      if (error) {
-        console.log(error);
-      }
-      else {
-        var hbsObject = { newsscrapes: scrapes };
-      res.render('index', hbsObject);
-      }
-    });
-  });
     
   
-  router.get("/scrape", function(req, res) {  
-  
-    request("https://www.theonion.com/", function(error, response, html) {
-  
-      let newsArr = [];
-  
-      var $ = cheerio.load(html);
-      // For each element with a "title" class
-      $("h1.headline").each(function(i, element) {
-        // Save the text and href of each link enclosed in the current element
-        var title = $(element).children("a").text();
-        var link = $(element).children("a").attr("href");
-  
-   
-        var newScrapeObj = new NewsScrape({  
-          title: title,
-          link: link  
-        })
-  
-        console.log(`New Obj: ${newScrapeObj}
-        --------------------------------------------`);
-  
-        newsArr.push(newScrapeObj);
-  
-      });
-  
-        NewsScrape.insertMany(newsArr, {ordered: false}, function(err, res) {
-  
-          if (err) {
-          console.log(`a news scrape has been completed with this info.
-          Please try again tomorrow`);
-        } else {
-      
-          return
-  
-        };
-  
-        });
-           
-          
-      });
-      res.redirect('/');
-    });
+
 
     router.get('/*', function(req, res){
 
       res.send(`This is not a valid URL.
-      Please try again`);
+      Please try again: ${req}`);
 
   });
+
+  
 
   router.post('/*', function(req, res){
 

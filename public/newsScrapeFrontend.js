@@ -13,7 +13,7 @@ $(document).ready(function() {
             method: "GET"
           }).done(function(res) {
 
-            window.location.replace("/");
+            console.log(`res from scrape: ${res}`);
 
            });  
     });
