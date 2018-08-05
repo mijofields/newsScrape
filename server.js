@@ -4,7 +4,6 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 // const logger = require("morgan");
 const mongojs = require("mongojs");
-const databaseUrl = "mongodb://heroku_194wc5v6:g50o512huirtvbsq75cacv7f8e@ds117539.mlab.com:17539/heroku_194wc5v6";
 
 
 const app = express();
@@ -33,7 +32,6 @@ app.listen(port, function() {
   console.log(`app now running on port ${port}`);
 });
 
-// Main route (simple Hello World Message)
 
 
 
