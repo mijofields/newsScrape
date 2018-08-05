@@ -22,13 +22,20 @@ $(document).ready(function() {
 
         let _id = $(this).data('id');
         let comment = $('#'+_id+'comment').val().trim();
-        let username = $('#'+_id+'comment').val().trim();
+        let username = $('#'+_id+'username').val().trim();
+
+        if(comment === '' || username === ''){
+
+            $('#errorModal').modal('show');
+            return;
+
+        }
 
 
         let commentToPost = {
 
-            comment: $('#'+_id+'comment').val().trim(),
-            username: $('#'+_id+'comment').val().trim()        
+            comment: comment,
+            username: username        
         }
 
 
