@@ -7,10 +7,10 @@
 
         {{#each newsscrapes }}
         <div class="row">
-          <div class="col-12" id="scrapes">
-          <div class="border rounded border-dark mb-1 bg-white" data-id={{_id}}>
-          <div class="text-left m-1">{{title}}</div>
-          <div class="text-left m-1"><a href={{link}} target="_blank">{{link}}</a></div>
+          <div class="col-12 scrapes">
+          <div class="border rounded border-dark mb-1 bg-white storyid" data-id={{this._id}}>
+          <div class="text-left m-1">{{this.title}}</div>
+          <div class="text-left m-1"><a href={{this.link}} target="_blank">{{this.link}}</a></div>
           <div class="text-left m-1">Scraped: {{created}}</div>
         {{#if comments}}
           {{#each comments}}
@@ -20,16 +20,17 @@
         {{/if}}
         <div class="text-left border-success border-top">
         
-        <form action="/{{_id}}" method="post">
+        {{!-- <form action="/{{_id}}" method="post"> --}}
+        <form>
         <div class="row no-gutters m-1">
         <div class="col-8">    
-        <input class="form-control" type="text" name="comment" id="comment"  placeholder="enter your comment:">
+        <input class="form-control comment" type="text" id='{{this._id}}comment' name="comment" placeholder="enter your comment:">
         </div>
         <div class="col-4">
-        <input class="form-control" type="text" name="username" id="username"  placeholder="your name:">
+        <input class="form-control username" type="text" id='{{this._id}}username' name="username" placeholder="your name:">
         </div>
         </div>
-        <input type="submit" class="btn btn-primary comment-btn m-1" value="Submit">
+        <input type="submit" class="btn btn-primary comment-btn m-1" data-id={{this._id}} value="Submit">
           
         </form>
         </div>

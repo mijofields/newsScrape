@@ -24,11 +24,11 @@ app.set('view engine', 'handlebars');
 
 
 
-var router = require('./controllers/scrapecontrol.js');
+const router = require('./controllers/scrapecontrol.js');
 app.use('/', router);
 
 // Open Server
-var port = process.env.PORT || 4812;
+const port = process.env.PORT || 4812;
 app.listen(port, function() {
   console.log(`app now running on port ${port}`);
 });
