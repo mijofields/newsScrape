@@ -8,7 +8,7 @@ const mongojs = require("mongojs");
 
 const app = express();
 
-app.use(logger("dev"));
+// app.use(logger("dev"));
 // Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: false }));
 // Use express.static to serve the public folder as a static directory
