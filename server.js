@@ -2,10 +2,10 @@
 const express = require("express");
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const logger = require("morgan");
+// const logger = require("morgan");
 const mongojs = require("mongojs");
-const databaseUrl = "mongodb://localhost:27017/newsScraper"; //from mongo documentation
-const collections = ["events"];
+const databaseUrl = "mongodb://heroku_194wc5v6:g50o512huirtvbsq75cacv7f8e@ds117539.mlab.com:17539/heroku_194wc5v6";
+
 
 const app = express();
 
