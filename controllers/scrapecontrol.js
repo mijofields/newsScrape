@@ -12,13 +12,13 @@ const moment = require('moment');
 
 // Database configuration
 const MONGODB_URI = "mongodb://heroku_5n8v1vvx:6g8j0t80brhlpjf4gfj49ifj54@ds041546.mlab.com:41546/heroku_5n8v1vvx";
-const databaseUrl = "mongodb://heroku_5n8v1vvx:6g8j0t80brhlpjf4gfj49ifj54@ds041546.mlab.com:41546/heroku_5n8v1vvx";
+const databaseUrl = "mongodb://heroku_5n8v1vvx:databa5e@ds041546.mlab.com:41546/heroku_5n8v1vvx";
 const collections = ["newsscrapes"];
 
 const NewsScrape = require("../models/newsScrapeModel.js");
 
 mongoose.connect(
-  process.env.MONGODB_URI || databaseUrl,{});
+  process.env.MONGODB_URI || databaseUrl,{useNewUrlParser: true});
 
 // Hook mongojs configuration to the db variable
 const db = mongojs(databaseUrl, collections);
@@ -56,7 +56,7 @@ router.get("/scrape", function(req, res, next) {
         if (err) {
         console.log(`${err.message}, it looks like a news scrape has been conducted recently.
                      ${err.result.nInserted} articles have been inserted 
-                     and ${err.writeErrors.length} articles were duplicates`);
+                     but ${err.writeErrors.length} articles were duplicates`);
 
         next();  
             
