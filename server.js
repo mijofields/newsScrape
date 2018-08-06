@@ -27,8 +27,6 @@ const router = require('./controllers/scrapecontrol.js');
 app.use('/', router);
 
 
-})
-
 // Open Server
 const port = process.env.PORT || 4812;
 app.listen(port, function() {
