@@ -11,8 +11,8 @@ const moment = require('moment');
 
 
 // Database configuration
-const MONGODB_URI = "mongodb://heroku_5n8v1vvx:6g8j0t80brhlpjf4gfj49ifj54@ds041546.mlab.com:41546/heroku_5n8v1vvx";
-const databaseUrl = "mongodb://heroku_5n8v1vvx:databa5e@ds041546.mlab.com:41546/heroku_5n8v1vvx";
+const MONGODB_URI = "mongodb://heroku_5n8v1vvx:databa5e@ds041546.mlab.com:41546/heroku_5n8v1vvx";
+const databaseUrl = "mongodb://localhost:27017/newsScraper";
 const collections = ["newsscrapes"];
 
 const NewsScrape = require("../models/newsScrapeModel.js");
