@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 // const logger = require("morgan");
 const mongojs = require("mongojs");
+const path = require('path');
 
 
 const app = express();
@@ -18,9 +19,9 @@ app.use(express.static("public"));
 
 //Initialize handlebars
 
+
 app.engine('handlebars', exphbs({defaultLayout: 'scrape'}));
 app.set('view engine', 'handlebars');
-
 
 
 const router = require('./controllers/scrapecontrol.js');

@@ -8,7 +8,7 @@
 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> <!--bootstrap cdn-->
    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
    <link rel="stylesheet" type="text/css" href="style.css">
-   <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet"> //google font
+   <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
   
   
   <title>The Onion News Scrape</title>
@@ -27,7 +27,7 @@
     <h4 class="display-4"><b>The Onion News Scraper</b></h4>
     <p class="lead"><b>This is a News Scraper utilizing mongoDB, mongooseJS and express handlebars
         to bring you the latest fake news and hilarity. Should you wish to leave a comment on any story please do so!</b></p>
-        {{!-- <form action="/scrape" method="get"> --}}
+        <form>
         <button type="submit" class="btn btn-success" id='scrape'><b>Fresh Scrape</b></button>
         </form>
         
@@ -42,7 +42,24 @@
 
     
     
-    
+  {{!-- <div class="modal" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Input Error:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <b>>Please be sure to include both a username and a comment...</b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> --}}
 
     
     
