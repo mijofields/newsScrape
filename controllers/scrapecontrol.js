@@ -90,9 +90,9 @@ router.get("/scrape", function(req, res, next) {
       console.log(error);
     }
     else {
-      res.send(scrapes);
-      // var hbsObject = { newsscrapes: scrapes };
-      // res.render('index', hbsObject);
+   
+      var hbsObject = { newsscrapes: scrapes };
+      res.render('index', hbsObject);
     }
   });
 });
