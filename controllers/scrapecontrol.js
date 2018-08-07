@@ -22,12 +22,12 @@ mongoose.connect(
   process.env.MONGODB_URI || databaseUrl,{useNewUrlParser: true});
 
 // Hook mongojs configuration to the db variable
-// const db = mongojs(databaseUrl, collections);
-// db.on("error", function(error) {
-//   console.log("Database Error:", error);
-// });
+const db = mongojs(MONGODB_URI, collections);
+db.on("error", function(error) {
+  console.log("Database Error:", error);
+});
 
-const db = mongojs(MONGODB_USER, collections);
+
 
 router.get("/scrape", function(req, res, next) {
   
@@ -90,9 +90,9 @@ router.get("/scrape", function(req, res, next) {
       console.log(error);
     }
     else {
-      console.log(scrapes);
-      var hbsObject = { newsscrapes: scrapes };
-      res.render('index', hbsObject);
+      res.send(scrapes);
+      // var hbsObject = { newsscrapes: scrapes };
+      // res.render('index', hbsObject);
     }
   });
 });
