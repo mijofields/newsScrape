@@ -22,7 +22,7 @@ mongoose.connect(
   process.env.MONGODB_URI || databaseUrl,{useNewUrlParser: true});
 
 // Hook mongojs configuration to the db variable
-const db = mongojs(MONGODB_URI, collections);
+const db = mongojs(MONGODB_USER, collections);
 db.on("error", function(error) {
   console.log("Database Error:", error);
 });
