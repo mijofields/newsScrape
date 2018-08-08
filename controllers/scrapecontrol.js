@@ -11,15 +11,15 @@ const moment = require('moment');
 
 
 // Database configuration
-const MONGODB_URI = "mongodb://heroku_194wc5v6:g50o512huirtvbsq75cacv7f8e@ds117539.mlab.com:17539/heroku_194wc5v6";
-const MONGODB_USER = "mongodb://user1:databa5e@ds041546.mlab.com:41546/heroku_5n8v1vvx"
+const MONGODB_URI = "mongodb://heroku_w2lr5mgz:7v57hi3fmgf62f87q7ff2gccst@ds031893.mlab.com:31893/heroku_w2lr5mgz";
+const MONGODB_USER = "mongodb://user1:databa5e@ds031893.mlab.com:31893/heroku_w2lr5mgz"
 const databaseUrl = "mongodb://localhost:27017/newsScraper";
 const collections = ["newsscrapes"];
 
 const NewsScrape = require("../models/newsScrapeModel.js");
 
 mongoose.connect(
-  process.env.MONGODB_URI || databaseUrl,{useNewUrlParser: true});
+  process.env.MONGODB_URI || MONGODB_URI,{useNewUrlParser: true});
 
 // Hook mongojs configuration to the db variable
 const db = mongojs(MONGODB_USER, collections);
