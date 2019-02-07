@@ -37,7 +37,7 @@ app.listen(port, function() {
 
 setInterval(function() {
 
-  http.get("https://stormy-plains-.herokuapp.com");
+  http.get("https://stormy-plains-53354.herokuapp.com");
 }, 300000);
 
 
