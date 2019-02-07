@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 // const logger = require("morgan");
 const mongojs = require("mongojs");
-const path = require('path');
+const http = require("http");
 
 
 const app = express();
@@ -35,6 +35,9 @@ app.listen(port, function() {
 });
 
 
+setInterval(function() {
 
+  http.get("https://stormy-plains-.herokuapp.com");
+}, 300000);
 
 
