@@ -60,14 +60,13 @@ router.get("/scrape", function(req, res, next) {
         console.log(`${err.message}, it looks like a news scrape has been conducted recently.
                      ${err.result.nInserted} articles have been inserted 
                      but ${err.writeErrors.length} articles were duplicates`);
-
+        console.log(1)  
         next();  
             
         //using next() to go to the next router after this possible write error  
 
       } else {
-    
-        res.redirect('/');
+        next();
 
       };
 
@@ -75,10 +74,11 @@ router.get("/scrape", function(req, res, next) {
       });         
     });
   }, function(req, res) {
-
+    console.log(3)
     res.redirect('/');
 
-  } );
+  } 
+  );
 
   // Retrieve data from the db
   router.get("/", function(req, res) {
