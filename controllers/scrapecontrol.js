@@ -45,7 +45,7 @@ router.get("/scrape", function(req, res, next) {
       let link = $(element).children("a").attr("href");
 
  
-      const newScrapeObj = new NewsScrape({  
+      let newScrapeObj = new NewsScrape({  
         title: title,
         link: link  
       })
@@ -60,7 +60,6 @@ router.get("/scrape", function(req, res, next) {
         console.log(`${err.message}, it looks like a news scrape has been conducted recently.
                      ${err.result.nInserted} articles have been inserted 
                      but ${err.writeErrors.length} articles were duplicates`);
-        console.log(1)  
         next();  
             
         //using next() to go to the next router after this possible write error  
@@ -74,7 +73,7 @@ router.get("/scrape", function(req, res, next) {
       });         
     });
   }, function(req, res) {
-    console.log(3)
+
     res.redirect('/');
 
   } 
