@@ -32,18 +32,21 @@ db.on("error", function(error) {
 router.get("/scrape", function(req, res, next) {
   
   console.log(`server scrape working`);
+
+  let root = "https://www.cnn.com/specials/us/energy-and-environment";
   
-   request("https://www.theonion.com/", function(error, response, html) {
+   request(root, function(error, response, html) {
 
     let newsArr = [];
 
     const $ = cheerio.load(html);
     // For each element with a "title" class
-    $("h1.headline").each(function(i, element) {
+    $("h3.cd__headline").each(function(i, element) {
       // Save the text and href of each link enclosed in the current element
       let title = $(element).children("a").text();
-      let link = $(element).children("a").attr("href");
-
+      console.log('title', title)
+      let link = root + $(element).children("a").attr("href");
+      console.log('link', link)
  
       let newScrapeObj = new NewsScrape({  
         title: title,
