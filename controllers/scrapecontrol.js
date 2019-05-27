@@ -12,6 +12,7 @@ const moment = require('moment');
 
 // Database configuration
 const MONGODB_URI = "mongodb://heroku_w2lr5mgz:7v57hi3fmgf62f87q7ff2gccst@ds031893.mlab.com:31893/heroku_w2lr5mgz";
+
 const MONGODB_USER = "mongodb://user1:databa5e@ds031893.mlab.com:31893/heroku_w2lr5mgz"
 const databaseUrl = "mongodb://localhost:27017/newsScraper";
 const collections = ["newsscrapes"];
@@ -44,10 +45,7 @@ router.get("/scrape", function(req, res, next) {
     $("h3.cd__headline").each(function(i, element) {
       // Save the text and href of each link enclosed in the current element
       let title = $(element).children("a").text();
-      console.log('title', title)
-      let link = root + $(element).children("a").attr("href");
-      console.log('link', link)
- 
+      let link = root + $(element).children("a").attr("href"); 
       let newScrapeObj = new NewsScrape({  
         title: title,
         link: link  
