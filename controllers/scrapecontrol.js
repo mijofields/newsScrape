@@ -7,14 +7,13 @@ const mongoose = require("mongoose");
 const request = require("request");
 const cheerio = require('cheerio');
 const moment = require('moment');
+require('dotenv').config();
 
 
 
 // Database configuration
-const MONGODB_URI = "mongodb://heroku_w2lr5mgz:7v57hi3fmgf62f87q7ff2gccst@ds031893.mlab.com:31893/heroku_w2lr5mgz";
+const MONGODB_URI = `mongodb://${process.env.DB_USERNAME}:${DB_PASSWORD}@ds111562.mlab.com:11562/sandbox`
 
-const MONGODB_USER = "mongodb://user1:databa5e@ds031893.mlab.com:31893/heroku_w2lr5mgz"
-const databaseUrl = "mongodb://localhost:27017/newsScraper";
 const collections = ["newsscrapes"];
 
 const NewsScrape = require("../models/newsScrapeModel.js");
