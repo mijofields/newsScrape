@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const request = require("request");
 const cheerio = require('cheerio');
 const moment = require('moment');
-require('dotenv').config({path: '../.env'});
+
 
 console.log(process.env.MONGO_URI);
 // Database configuration
