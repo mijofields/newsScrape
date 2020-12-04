@@ -12,7 +12,7 @@ require('dotenv').config();
 
 
 // Database configuration
-const MONGODB_URI = `mongodb://${process.env.DB_USERNAME}:${DB_PASSWORD}@ds111562.mlab.com:11562/sandbox`
+const MONGODB_URI = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@ds111562.mlab.com:11562/sandbox`
 
 const collections = ["newsscrapes"];
 
