@@ -2,11 +2,7 @@
 const express = require("express");
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-// const logger = require("morgan");
-const mongojs = require("mongojs");
-
-
-
+require('dotenv').config();
 
 const app = express();
 
