@@ -7,22 +7,20 @@ const mongoose = require("mongoose");
 const request = require("request");
 const cheerio = require('cheerio');
 const moment = require('moment');
-require('dotenv').config();
-
+require('dotenv').config({path: '../.env'});
 
 
 // Database configuration
-const MONGODB_URI = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@ds111562.mlab.com:11562/sandbox`
 
 const collections = ["newsscrapes"];
 
 const NewsScrape = require("../models/newsScrapeModel.js");
 
 mongoose.connect(
-  process.env.MONGODB_URI || MONGODB_URI,{useNewUrlParser: true});
+  process.env.MONGO_URI,{useNewUrlParser: true});
 
 // Hook mongojs configuration to the db variable
-const db = mongojs(MONGODB_URI, collections);
+const db = mongojs(process.env.MONGO_URI, collections);
 db.on("error", function(error) {
   console.log("Database Error:", error);
 });
