@@ -9,7 +9,6 @@ const cheerio = require('cheerio');
 const moment = require('moment');
 require('dotenv').config({path: '../.env'});
 
-
 // Database configuration
 
 const collections = ["newsscrapes"];
